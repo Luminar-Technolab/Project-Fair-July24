@@ -794,3 +794,20 @@
             - Update a data : updateOne(), updateMany() , findByIdAndUpdate()
             - delete a data : deleteOne() , deleteMany() , findByIdAndDelete()
         7. Querying statements used in mongoose : skip() , limit() , sort()
+
+
+        ----------------------------------------------------------------------------------
+                        JSON WEB TOKEN - USED TO AUTHORIZATION IN NODE JS
+        ----------------------------------------------------------------------------------
+
+        1. JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
+        2. features 
+            - Authorization
+            - Information Exchange
+        3. Structure of token : header.payload.signature
+        4. To generate token : 
+            - install jsonwebtoken : npm i jsonwebtoken
+            - import jsonwebtoken 
+            - use sign method to generate token : sign(payload,password)
+            - payload : are used to store data inside the token
+            - when user successfully login then generate token for Authorization 
