@@ -778,6 +778,13 @@
                 - using mongoose create schema / structure for data to be stored model
                 - create model using schema 
                 - export model 
+            - Middlewares : used to perform a task before executing its controllers
+                - create folder inside server
+                - create js file to define middleware and export middleware
+                - use middleware in specific router
+            - Handling uploaded file in server
+                - create a folder to store uploaded files in server folder
+                - create js file to handling uploading file using multer in middleware folder
 
         ----------------------------------------------------------------------------------
                 MONGOOSE - node js package used to communicate with MongoDB & Nodejs
@@ -811,3 +818,26 @@
             - use sign method to generate token : sign(payload,password)
             - payload : are used to store data inside the token
             - when user successfully login then generate token for Authorization 
+        5. Verify token : use verify method use token and password used to generate token
+            - if token verified then we will get an object as response with data stored in token its payload
+            - if token verification is failed then we will get error
+
+
+        ----------------------------------------------------------------------------------
+                    MIDDLEWARES : Controll request response cycle of Node js
+        ----------------------------------------------------------------------------------
+
+        1. They are function with 3 arguments, first is request, second is response and third is next. 
+        2. Different types of middleware 
+            - Application specific middleware , ex: express.json()
+            - Router specific middleware : active for certain Routes
+                - create a function with 3 arguments
+        
+        ----------------------------------------------------------------------------------
+                MULTER : Middlewares used to handle multipart/form-data in Nodejs
+        ----------------------------------------------------------------------------------
+
+        1. Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files.
+        2. Install multer : npm i multer
+        3. Multer adds a body object and a file or files object to the request object. The body object contains the values of the text fields of the form, the file or files object contains the files uploaded via the form.
+        4. multer can stored uploaded file  in server

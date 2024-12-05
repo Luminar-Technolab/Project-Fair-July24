@@ -33,6 +33,33 @@ const Add = () => {
   }
   const handleShow = () => setShow(true);
 
+  const handleAddProject = ()=>{
+    const {title,languages,overview,github,website,projectImage} = projectDetails
+    if(title && languages && overview && github && website && projectImage){
+      // api call
+      const reqBody = new FormData()
+      reqBody.append("title",title)
+      reqBody.append("languages",languages)
+      reqBody.append("overview",overview)
+      reqBody.append("github",github)
+      reqBody.append("website",website)
+      reqBody.append("projectImage",projectImage)
+
+      const token = sessionStorage.getItem("token")
+      if(token){
+        const reqHeader = {
+          "Content-Type":"multipart/form-data",
+          "Authorization": `Bearer ${token}`
+        }
+        //make api call
+      }
+
+    }else{
+      alert("Please fill the form completely!!!")
+    }
+  }
+
+
   return (
     <>
       <button onClick={handleShow} className="btn btn-primary">+ New Project</button>
@@ -74,7 +101,7 @@ const Add = () => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary">Add</Button>
+          <Button onClick={handleAddProject} variant="primary">Add</Button>
         </Modal.Footer>
       </Modal>
     </>
