@@ -2,6 +2,7 @@
 import React,{useEffect, useState} from 'react'
 import { Modal,Button } from 'react-bootstrap'
 import uploadProjectImg from '../assets/uploadProjectImg.png'
+import { addProjectAPI } from '../services/allAPI'
 
 const Add = () => {
   const [preview,setPreview] = useState("")
@@ -33,7 +34,7 @@ const Add = () => {
   }
   const handleShow = () => setShow(true);
 
-  const handleAddProject = ()=>{
+  const handleAddProject = async ()=>{
     const {title,languages,overview,github,website,projectImage} = projectDetails
     if(title && languages && overview && github && website && projectImage){
       // api call
@@ -52,6 +53,21 @@ const Add = () => {
           "Authorization": `Bearer ${token}`
         }
         //make api call
+        try{
+          const result = await addProjectAPI(reqBody,reqHeader)
+          console.log(result);
+          if(result.status==200){
+            alert(`${result?.data?.title} uploaded successfully!!!`)
+            handleClose()
+          }
+          else{
+            if(result.response.status==406){
+              alert(result.response.data)
+            }
+          }
+        }catch(err){
+          console.log(err);          
+        }
       }
 
     }else{

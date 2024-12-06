@@ -783,8 +783,13 @@
                 - create js file to define middleware and export middleware
                 - use middleware in specific router
             - Handling uploaded file in server
+                - install multer : npm i multer
                 - create a folder to store uploaded files in server folder
                 - create js file to handling uploading file using multer in middleware folder
+                - defining storage space for uploaded file and use the storage in multer function and it return a multer instance which act as a middleware
+                - export the multer instance
+                - we will use multer middleware inside any route which handling uploaded file from request, multer middleware can handle single / multiple uploaded files
+            - Exporting static file from a server to internet using node js : server.use(url,express.static('folder/file-path')) in index.js file
 
         ----------------------------------------------------------------------------------
                 MONGOOSE - node js package used to communicate with MongoDB & Nodejs
