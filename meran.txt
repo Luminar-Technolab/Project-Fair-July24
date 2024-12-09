@@ -552,6 +552,8 @@
                     - useParams() : hook will return dynamic value of route associated with a component
                     - useSelector() : hook used to select state from redux store
                     - useDispatch() : hook used to dispatch action from a Compoenet
+                    - useNavigate() : hook used to navigate / redirect from one component to another
+                    - useContext() : hook used to access context in component
                 - Custom Hooks : create js file to define a specific function for a special task. export the function from that file. function name must start with 'use' keyword
         14. Form Handling in React : there are 2 ways to Manage data inside the form by a component
             - Controlled Components : are component which store form data inside its own state
@@ -565,6 +567,8 @@
                 3. To set up path for component, use 'Route' component of react-router-dom Library. Route Compoenet has attributes like 'path' and 'element' inorder setup route for component. All Route component must be inside Routes component
             - Dynamic Routing : we can set up a dynamic / changing value in a url along : symbol, so react app will understand value along with a : is dynamic part of this url.
             - To set up Page not found url use path as * , its path must be set up at the end of all url in react app
+            - useNavigate hook : is return a function which capable of redirecting one page to another from component
+            - Link component is used to redirect from one page to another using jsx
         16. Higher Order Compoenets (HOC) : are component whose props argument will give another Compoenet, ex: Route component
         17. API Call in react :
             - Using Axios Library : install axios - npm i axios
@@ -573,7 +577,21 @@
             - Http response using axios will always return object with predefind keys (data(server response),status )
             - Create services folder inside src of your react app
         18. Data shairing between components in react
-            - State Lifting : data shairing is using props. We will create a state in common parent of data to be shared Compoenets. share state updation function one component and state to another component. 
+            - State Lifting : data shairing is using props. We will create a state in common parent of data to be shared Compoenets. share state updation function one component and state to another component.
+            - REDUX : using state management library 
+            - Context API : used share data from different Compoenets
+                - This is an in built feature react to share data between any Components without using props
+                - We can share data from one component to another component using react context 
+                - Steps to perform data shairing using context API
+                    - create a folder for holding context
+                    - create a Compoenet inside the folder for performing data share using context
+                    - create context inside the component file and export the context, use 'createContext' method
+                    - inside component create data (state & state update function) to be shared via the context
+                    - context can share data using its 'Provider' property, as well as its 'value' property can share the data as object 
+                    - make context Compoenet as the 'root component' of our project  (inside the main.jsx file wrap root component inside context component), then only project components become children of context component (to access project components inside context component it can use children props)
+                    - children props used to access all children of a component at the same time
+                    - useContext hook : to access data from context in component
+                        - const {value} = useContext(contxet)
 
 
 
@@ -789,7 +807,7 @@
                 - defining storage space for uploaded file and use the storage in multer function and it return a multer instance which act as a middleware
                 - export the multer instance
                 - we will use multer middleware inside any route which handling uploaded file from request, multer middleware can handle single / multiple uploaded files
-            - Exporting static file from a server to internet using node js : server.use(url,express.static('folder/file-path')) in index.js file
+            - Exporting static file/folder from a server to internet using node js : server-name.use(url,express.static('folder/file-path')) in index.js file
 
         ----------------------------------------------------------------------------------
                 MONGOOSE - node js package used to communicate with MongoDB & Nodejs
