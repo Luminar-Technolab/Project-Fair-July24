@@ -3,9 +3,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import Add from './Add'
 import Edit from './Edit'
 import { userProjectsAPI } from '../services/allAPI'
-import { addProjectContext } from '../contexts/ContextShare'
+import { addProjectContext, editProjectContext } from '../contexts/ContextShare'
 
 const View = () => {
+  const {editProjectResponse,setEditProjectResponse} = useContext(editProjectContext)
   const {addProjectResponse,setAddProjectResponse}  =  useContext(addProjectContext)
   // steps to display user projects
   // 1. create state to store user projects
@@ -14,7 +15,7 @@ const View = () => {
     // 3. call that user project getting function using useEffect
   useEffect(()=>{
     getUserProject()
-  },[addProjectResponse])
+  },[addProjectResponse,editProjectResponse])
   // 2. create a function for getting all user projects and call api inside that function store all user projects inside the state
   const getUserProject = async ()=>{
     const token = sessionStorage.getItem("token")

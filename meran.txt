@@ -579,16 +579,15 @@
         18. Data shairing between components in react
             - State Lifting : data shairing is using props. We will create a state in common parent of data to be shared Compoenets. share state updation function one component and state to another component.
             - REDUX : using state management library 
-            - Context API : used share data from different Compoenets
-                - This is an in built feature react to share data between any Components without using props
-                - We can share data from one component to another component using react context 
+            - Context API : used share data from different Compoenets without using 'props'
+                - This is an in built feature react to share data between any Components without using props and avoid props drilling
+                - We can share data from one component to another component using react 'context' 
                 - Steps to perform data shairing using context API
-                    - create a folder for holding context
-                    - create a Compoenet inside the folder for performing data share using context
+                    - create a Compoenet inside the folder for performing data share using context, this Compoenet purpose is to share data via context
                     - create context inside the component file and export the context, use 'createContext' method
                     - inside component create data (state & state update function) to be shared via the context
-                    - context can share data using its 'Provider' property, as well as its 'value' property can share the data as object 
-                    - make context Compoenet as the 'root component' of our project  (inside the main.jsx file wrap root component inside context component), then only project components become children of context component (to access project components inside context component it can use children props)
+                    - context can share data using its 'Provider' property, as well as its 'value' property can share the data as object so that it can share it its child components
+                    - make context Compoenet as the 'root component' of our project  (inside the main.jsx file wrap root component inside context component), then only project components become 'children' of context component (to access project components inside context component it can use 'children' props)
                     - children props used to access all children of a component at the same time
                     - useContext hook : to access data from context in component
                         - const {value} = useContext(contxet)
