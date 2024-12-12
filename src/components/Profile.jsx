@@ -3,6 +3,7 @@ import React,{useEffect, useState} from 'react'
 import { Collapse } from 'react-bootstrap'
 import uploadImg from '../assets/uploadImg.jpg'
 import SERVER_BASE_URL from '../services/serverUrl';
+import { updateUserAPI } from '../services/allAPI';
 
 const Profile = () => {
   const [open, setOpen] = useState(false);
@@ -54,6 +55,19 @@ const Profile = () => {
           "Authorization": `Bearer ${token}`
         }
         // make api call
+        try{
+          const result = await updateUserAPI(reqBody,reqHeader)
+          if(result.status==200){
+            // alert
+            alert("User profile updated successfullyy!!!")
+            // store update user in session
+            sessionStorage.setItem("user",JSON.stringify(result.data))
+            // collapse profile
+            setOpen(!open)
+          }
+        }catch(err){
+          console.log(err);          
+        }
       }
     }else{
       alert("Please fill the form completetly!!!!")
@@ -78,7 +92,7 @@ const Profile = () => {
               <img width={'200px'} height={'200px'} className='rounded-circle' src={preview?preview:`${SERVER_BASE_URL}/uploads/${existingProfilePic}`} alt="" />
             }
           </label>
-          <div className="mb-2 w-100">
+          <div className="my-2 w-100">
             <input value={userDetails.github} onChange={e=>setUserDetails({...userDetails,github:e.target.value})} type="text" placeholder='User GITHUB Link' className="form-control" />
           </div>
           <div className="mb-2 w-100">
